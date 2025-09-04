@@ -352,7 +352,7 @@
     }
     
     async function generateAnswer(context, question) {
-        const apiKey = "AIzaSyAGqdh9hVcTkFa7LmGGeYwCc5Gjcych-Yo"; // NOTE: Replace with your actual API key
+        const apiKey = " "; // NOTE: Replace with your actual API key
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
         const systemPrompt = "You are a helpful assistant. Answer the user's question based *only* on the provided context. Synthesize information from the different source chunks if necessary. Do not use any external knowledge. If the answer is not found in the context, state that you couldn't find an answer in the provided documents. Format your response using Markdown.";
         const userPrompt = `CONTEXT:\n---\n${context}\n---\n\nQUESTION: ${question}`;
