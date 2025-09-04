@@ -1,0 +1,104 @@
+1. index.html → The Structure (Skeleton)
+
+This file holds the content and structure of your app.
+Think of it as the skeleton of your project.
+
+What’s inside:
+
+Head section (<head>)
+
+Links to TailwindCSS and external libraries (PDF.js, Mammoth, XLSX, etc.)
+
+Link to your own stylesheet style.css
+
+Page title and fonts.
+
+Body section (<body>)
+
+Login/Signup forms
+Contains the HTML for login and signup with email/password.
+
+Main App container
+Holds:
+
+Left side → file upload area, progress info, list of documents.
+
+Right side → chat window and input box to ask questions.
+
+Script link
+At the very bottom, <script src="app.js"></script> loads your JavaScript.
+
+👉 In short:
+index.html only says “what things exist and where they go on the page.”
+It does not decide colors (CSS) or behaviors (JS).
+
+2. style.css → The Design (Clothes/Makeup)
+
+This file controls how everything looks.
+Think of it as the clothes and makeup of your skeleton.
+
+What’s inside:
+
+Fonts (Inter)
+
+Custom scrollbar design
+
+File drop-zone highlighting when dragging files
+
+Loader animation (spinning circle)
+
+Text spacing and formatting rules
+
+👉 Example:
+
+.file-drop-zone.dragover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+
+This means: “When someone drags a file over the box, highlight it with blue borders and light background.”
+
+👉 In short:
+style.css controls colors, spacing, animations, and styles.
+
+3. app.js → The Brain (Behavior/Logic)
+
+This file controls how the page behaves.
+Think of it as the brain of your app.
+
+What’s inside:
+
+Worker script → Reads and extracts text from PDFs, DOCX, PPTX, XLSX, and CSV files.
+
+Authentication (Login/Signup) → Saves user data in localStorage/sessionStorage and switches between login and app views.
+
+App state → Keeps track of uploaded documents, processed text chunks, and TF-IDF index.
+
+Chat logic (RAG system) →
+
+Splits text into chunks.
+
+Uses TF-IDF to retrieve the most relevant chunks.
+
+Sends them to the Gemini API to generate answers.
+
+UI updates → Shows messages, progress bar, status indicators, and chat bubbles.
+
+👉 Example:
+
+function handleLogin() {
+  const email = authDom.loginEmail.value.trim();
+  const password = authDom.loginPassword.value;
+  const storedPassword = localStorage.getItem(email);
+
+  if (storedPassword && storedPassword === password) {
+    sessionStorage.setItem('loggedInUser', email);
+    showApp();
+  } else {
+    showAuthError('login', 'Invalid email or password.');
+  }
+}
+
+
+This means: “When user clicks login, check if email/password match stored data. If yes, log them in; if not, show error.”
